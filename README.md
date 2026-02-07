@@ -86,25 +86,6 @@ Run the application in the background so it continues running after logout:
 nohup java -jar email-writer-backend-0.0.1-SNAPSHOT.jar > output.log 2>&1 &
 ```
 
-<p>
-Command Explanation:
-
-nohup
-Prevents the application from stopping when the SSH session is closed or the user logs out of the EC2 instance.
-
-java -jar email-writer-backend-0.0.1-SNAPSHOT.jar
-Starts the Spring Boot application from the executable JAR file.
-
-> output.log
-Redirects standard output (application logs) to the file output.log.
-
-2>&1
-Redirects standard error output (error logs) to the same file as standard output.
-
-&
-Runs the application as a background process, allowing the terminal to be used for other commands.
-</p>
-
 ## 7️⃣ View Application Logs
 
 To monitor logs in real time:
