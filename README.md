@@ -17,3 +17,78 @@
 
 ## 6. Google Chrome Extension
 <img width="1906" height="672" alt="image" src="https://github.com/user-attachments/assets/d903836a-23ce-4de0-b413-378e212d7606" />
+
+
+## AWS EC2 Deployment
+### 1. Create a EC2 Instance
+### 2. Create JAR file of spring boot application
+### 3. Logging in AWS EC2 using certificate & SSH command
+### 4. Paste JAR to home/ec2-user folder in EC2 from your local
+### 5. Using CLI, check whether your EC2 instance has JAVA installed or not
+### 6. If not then run : sudo yum update -y , after that install java 17 : sudo yum install java-17-amazon-corretto-devel -y
+
+
+
+## 🧱 AWS EC2 Deployment Steps
+
+### 1️⃣ Create an EC2 Instance
+
+1. Log in to **AWS Management Console**
+2. Go to **EC2 → Launch Instance**
+3. Select **Amazon Linux 2**
+4. Choose instance type (e.g. `t2.micro`)
+5. Create or select an existing **Key Pair (.pem)**
+6. Configure **Security Group**:
+   - Allow **SSH (22)**
+   - Allow **Custom TCP (8080)**
+7. Launch the instance
+
+---
+
+## 2️⃣ Create JAR File of Spring Boot Application
+
+From the root directory of the Spring Boot project:
+
+```bash
+mvn clean package
+```
+
+## 3️⃣ Upload JAR File to EC2
+```bash
+scp -i <your-key.pem> target/email-writer-backend-0.0.1-SNAPSHOT.jar ec2-user@<public-ip>:/home/ec2-user/
+```
+
+## 4️⃣ Login to EC2 Using SSH
+Linux / macOS
+```bash
+ssh -i <your-key.pem> ec2-user@<public-ip>
+```
+
+## 5️⃣ Install Java 17 on EC2 (Amazon Linux 2)
+
+Update system packages:
+```bash
+sudo yum update -y
+```
+Install Java 17:
+```bash
+sudo yum install java-17-amazon-corretto -y
+```
+Verify installation:
+```bash
+java -version
+```
+
+## 6️⃣ Run Spring Boot Application Using nohup
+
+Run the application in the background so it continues running after logout:
+```bash
+nohup java -jar email-writer-backend-0.0.1-SNAPSHOT.jar > output.log 2>&1 &
+```
+
+## 7️⃣ View Application Logs
+
+To monitor logs in real time:
+```bash
+tail -f output.log
+```
