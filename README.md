@@ -18,17 +18,6 @@
 ## 6. Google Chrome Extension
 <img width="1906" height="672" alt="image" src="https://github.com/user-attachments/assets/d903836a-23ce-4de0-b413-378e212d7606" />
 
-
-## AWS EC2 Deployment
-### 1. Create a EC2 Instance
-### 2. Create JAR file of spring boot application
-### 3. Logging in AWS EC2 using certificate & SSH command
-### 4. Paste JAR to home/ec2-user folder in EC2 from your local
-### 5. Using CLI, check whether your EC2 instance has JAVA installed or not
-### 6. If not then run : sudo yum update -y , after that install java 17 : sudo yum install java-17-amazon-corretto-devel -y
-
-
-
 ## 🧱 AWS EC2 Deployment Steps
 
 ### 1️⃣ Create an EC2 Instance
